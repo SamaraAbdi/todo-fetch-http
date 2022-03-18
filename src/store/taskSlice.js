@@ -28,34 +28,49 @@ const todoSlice = createSlice({
     },
 })
 
+
 export const sendListData = (todo) => {
     return (dispatch) => {
 
-        fetch('https://todo-fetch-2e027-default-rtdb.firebaseio.com/todo.json', {
-            method: 'PUT',
+        fetch('https://todo-fetch-2e027-default-rtdb.firebaseio.com/todo', {
+            method: 'POST',
             body: JSON.stringify(todo)
-        }).then((response) => {
-            if (!response.ok) {
-                throw new Error('Sending todo list')
-            }
         })
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('Sending todo list')
+                }
+            })
+        dispatch(todoActions.addToDo(todo))
+        // return todo
     }
 }
-
 export const getListData = (todo) => {
     return (dispatch) => {
-
-        fetch('https://todo-fetch-2e027-default-rtdb.firebaseio.com/todo.json', {
+        const response = fetch('https://todo-fetch-2e027-default-rtdb.firebaseio.com/todo.json', {
             method: 'GET',
-            // body: JSON.stringify(todo)
-        }).then((response) => {
-            if (!response.ok) {
-                throw new Error('Sending todo list Get')
-            }
         })
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('Sending todo list Get')
+                }
+            })
+        // const data = response.json()
+        const generatedData = []
+        // for (const key in response) {
+        //     generatedData.push({
+        //         id: key,
+        //         title: response[key].title,
+        //         complete: response[key].complete,
+        //     })
+        //     break;
+        // continue;
+        // }
+        return generatedData
     }
 }
 
 // export const { addToDo, deleteToDo, editTodo } = todoSlice.actions
-export const { addToDo, deleteToDo, editTodo } = todoSlice.actions
+
+export const todoActions = todoSlice.actions
 export default todoSlice;

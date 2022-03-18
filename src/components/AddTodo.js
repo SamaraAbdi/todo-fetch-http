@@ -1,19 +1,19 @@
 
 
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { addToDo, getListData } from "../store/taskSlice";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { todoActions } from "../store/taskSlice";
 
 
 const AddTodo = () => {
 
     const dispatch = useDispatch();
-    const { todoList } = useSelector((state) => state.todo);
+    // const { todoList } = useSelector((state) => state.todo);
 
 
-    useEffect(() => {
-        dispatch(getListData(todoList))
-    }, [todoList, dispatch])
+    // useEffect(() => {
+    //     dispatch(todoActions.getListData(todoList))
+    // }, [todoList, dispatch])
 
     const [state, setState] = useState({
         content: '',
@@ -35,7 +35,7 @@ const AddTodo = () => {
             });
             return;
         }
-        dispatch(addToDo({ newContent: content }));
+        dispatch(todoActions.addToDo({ newContent: content }));
         setState({ ...state, content: '' });
     }
     const { content, contentError } = state;

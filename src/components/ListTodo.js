@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteToDo, editTodo, sendListData } from "../store/taskSlice";
+import { sendListData, todoActions } from "../store/taskSlice";
 
 
 
@@ -12,7 +12,7 @@ const ListTodo = () => {
     const dispatch = useDispatch();
     const [isEditing, setEditing] = useState(false);
     const [state, setState] = useState({
-        id: '', content: '', contentError: null
+        id: Date.now(), content: '', contentError: null
     });
 
     useEffect(() => {
@@ -37,7 +37,7 @@ const ListTodo = () => {
             setState({ ...state, contentError: 'Пустое поле!' });
             return;
         }
-        dispatch((editTodo({ content, id })));
+        dispatch((todoActions.editTodo({ content, id })));
         setEditing(false);
     }
     return <div>
@@ -52,16 +52,18 @@ const ListTodo = () => {
         </div> :
             <ol className='todos'>
                 {
-                    todoList.map(({ id, content }) => {
+                    todoList.map((el) => {
                         return <div >
-                            <li className='list' key={id}>
-                                <div className="box"><p className='content'>{content}</p></div>
+                            <li className='list' key={el.id}
+                            // id={el.id}
+                            >
+                                <div className="box"><p className='content'>{el.content}</p></div>
                                 <div className='box-btn'>
                                     <button className="button"
-                                        onClick={() => dispatch(deleteToDo({ id }))}
+                                        onClick={() => dispatch(todoActions.deleteToDo({ id: el.id }))}
                                     >X</button>
                                     <button className="button"
-                                        onClick={() => onEditToggle(id, content)}
+                                        onClick={() => onEditToggle(el.id, el.content)}
                                     >+</button>
                                 </div>
                             </li>
