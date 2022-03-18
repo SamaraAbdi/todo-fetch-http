@@ -1,0 +1,96 @@
+body {
+  background-color: rgba(35, 24, 159, 0.7);
+  padding: 0px;
+  margin: 0px;
+  color: rgba(0, 0, 0, 0.87);
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  color: #cfccff;
+  overflow-x: hidden;
+}
+
+.app {
+  text-align: center;
+  background: hsla(317, 98%, 35%, 0.6);
+  width: 50%;
+  margin: 30px auto;
+  padding: 30px;
+  box-shadow: 2px 2px 20px #ffb1b1;
+  border-radius: 15px;
+}
+.app-title {
+  margin-bottom: 30px;
+}
+
+input {
+  background: hsla(317, 98%, 35%, 0.2);
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: 2px solid #ecebf8;
+  color: #faf8ff;
+  font-size: 1em;
+  width: 500px;
+}
+input:focus {
+  box-shadow: 0 0 8px rgba(142, 228, 175, 0.4);
+  outline: none;
+}
+
+.list {
+  list-style: none;
+  margin-top: 10px;
+  width: 670px;
+  display: grid;
+  grid-gap: 15px;
+  grid-template-columns: minmax(200px, 2fr) 200px;
+  background-color: rgba(35, 24, 159, 0.5);
+  color: #444;
+  border-radius: 15px;
+}
+
+.box {
+  width: 550px;
+  color: #fff;
+  margin-top: 10px;
+  font-size: 150%;
+}
+.content {
+  width: 520px;
+  word-wrap: break-word;
+  text-align: start;
+  padding-left: 30px;
+}
+.box-btn {
+  width: 110px;
+  height: 20px;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 150%;
+  margin-left: 70px;
+  margin-top: 8px;
+}
+
+.button {
+  background: rgb(95, 107, 245);
+  border: 2px solid var(--primary);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 10px;
+  text-transform: uppercase;
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.6);
+  display: inline-block;
+  font-size: 1em;
+  margin-left: 15px;
+  cursor: pointer;
+}
+.button:hover {
+  color: #222;
+  background: rgb(103, 161, 241);
+}
+
+.error {
+  color: rgb(187, 30, 30);
+  text-align: left;
+  margin-left: 2px;
+}
